@@ -8,9 +8,10 @@ const getDragonsFromServer = dragons => ({
   dragons
 });
 
-//thunky thunks
-export const fetchDragons = () => async dispatch => {
-  const { data } = await axios.get("/api/dragons");
+// thunk - function returned by another function
+// handles AJAX requests
+export const fetchDragons = () => async dispatch => { // thunk creator
+  const { data } = await axios.get("/api/dragons"); // actual thunk
   const action = getDragonsFromServer(data);
   dispatch(action);
   /*setTimeout(() => {
@@ -19,6 +20,7 @@ export const fetchDragons = () => async dispatch => {
   
 };
 
+// initial data is empty array - we using thunk to populate the data from db
 const initialState = {
   all: [],
   loading: true

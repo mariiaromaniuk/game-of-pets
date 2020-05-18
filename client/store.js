@@ -5,6 +5,7 @@ import loggerMiddleware from "redux-logger";
 import wolfReducer from './reducers/wolfReducer';
 import dragonReducer from './reducers/dragonReducer';
 
+// map the imported reducers to separate sections of the app
 const rootReducer = combineReducers({
   dragons: dragonReducer,
   wolves: wolfReducer
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
 
 const store = createStore(
   rootReducer,
+  // we need to apply thunk middleware here 
   applyMiddleware(thunkMiddleware, loggerMiddleware)
 );
 

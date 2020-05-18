@@ -1,9 +1,12 @@
 import React from "react";
 import { connect } from "react-redux";
+// importing the thunk
 import { fetchDragons } from "./reducers/dragonReducer";
 
 class AllDragons extends React.Component {
 
+  // We want to move all the AJAX request from React to Redux
+  // so React wil be responsible only for the view, not state
   componentDidMount() {
     this.props.fetchDragons();
   }
